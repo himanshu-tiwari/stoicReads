@@ -17,12 +17,17 @@ class AddBook extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.addBookMutation({
+            variables : {
+                name : this.state.name,
+                genre : this.state.genre,
+                authorId : this.state.authorId
+            }
+        });
     };
 
     displayAuthors = () => {
         const { getAuthorsQuery } = this.props;
-        console.log(this.props);
 
         if (getAuthorsQuery.loading) {
             return(
@@ -41,16 +46,16 @@ class AddBook extends Component {
 
                     <div className="input-field">
                         <label>Book Name</label>
-                        <input id="name" type="text" onChange={this.handleChange} />
+                        <input id="name" type="text" onChange={this.handleChange} required />
                     </div>
 
                     <div className="input-field">
                         <label>Genre</label>
-                        <input id="genre" type="text" onChange={this.handleChange} />
+                        <input id="genre" type="text" onChange={this.handleChange} required />
                     </div>
 
                     <div className="input-field">
-                        <select id="authorId" className="browser-default" onChange={this.handleChange} defaultValue=''>
+                        <select id="authorId" className="browser-default" onChange={this.handleChange} defaultValue='' required>
                             <option disabled value=''>Select Author</option>
                             { this.displayAuthors() }
                         </select>
