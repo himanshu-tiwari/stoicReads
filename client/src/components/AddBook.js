@@ -3,13 +3,21 @@ import { graphql } from 'react-apollo';
 import { getAuthorsQuery } from '../queries/queries';
 
 class AddBook extends Component {
+    state = {
+        name : '',
+        genre : '',
+        authorId : ''
+    };
+
     handleChange = (e) => {
-        console.log(e.target.value);
+        this.setState({
+            [e.target.id] : e.target.value
+        });
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.value);
+        console.log(this.state);
     };
 
     displayAuthors = () => {
@@ -32,16 +40,16 @@ class AddBook extends Component {
 
                     <div className="input-field">
                         <label>Book Name</label>
-                        <input type="text" onChange={this.handleChange} />
+                        <input id="name" type="text" onChange={this.handleChange} />
                     </div>
 
                     <div className="input-field">
                         <label>Genre</label>
-                        <input type="text" onChange={this.handleChange} />
+                        <input id="genre" type="text" onChange={this.handleChange} />
                     </div>
 
                     <div className="input-field">
-                        <select className="browser-default" onChange={this.handleChange} defaultValue=''>
+                        <select id="authorId" className="browser-default" onChange={this.handleChange} defaultValue=''>
                             <option disabled value=''>Select Author</option>
                             { this.displayAuthors() }
                         </select>
