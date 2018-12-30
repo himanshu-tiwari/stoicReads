@@ -37,3 +37,6 @@ textarea.materialize-textarea
 select {
 	border-color: black;
 }
+#book-list li {
+  cursor: pointer;
+}
