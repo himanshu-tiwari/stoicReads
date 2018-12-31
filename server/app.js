@@ -3,6 +3,9 @@ const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const config = require('./config/config');
+
+const { db } = config;
 
 const app = express();
 
@@ -10,7 +13,7 @@ const app = express();
 app.use(cors());
 
 // connect to mlab db
-mongoose.connect('mongodb://root:Abcd1234@ds013579.mlab.com:13579/stoic-reads', { useNewUrlParser : true });
+mongoose.connect('mongodb://'+ db.username + ':'+ db.password + '@'+ db.name, { useNewUrlParser : true });
 mongoose.connection.once('open', () => {
     console.log('connected to db!');
 });
