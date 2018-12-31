@@ -9,9 +9,11 @@ const BookDetails = (props) => {
         return(
             <div id="book-details">
                 <h4>{ book.name }</h4>
-                <p>{ book.genre }</p>
-                <p>{ book.author.name }</p>
-                <p>All books by { book.author.name }:</p>
+                <p><span className="genre card white black-text">{ book.genre }</span> <span className="author right"><i>- { book.author.name }</i></span></p>
+
+                <br/>
+
+                <h5>Other books by { book.author.name }:</h5>
                 <ul className="other-books">
                     {
                         book.author.books.map(book => <li key={book.id}>{ book.name }</li>)
@@ -21,7 +23,9 @@ const BookDetails = (props) => {
         );
     } else {
         return(
-            <div id="book-details">No book selected...</div>
+            <div id="book-details">
+                <h5>Click a book name to view more details...</h5>
+            </div>
         );
     }
 };

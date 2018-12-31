@@ -24,12 +24,16 @@ class BookList extends Component {
         } else {
             const Books = data.books.map(book => <li key={book.id} id={book.id} onClick={this.handleClick}>{ book.name }</li>);
             return(
-                <div>
-                    <ul id="book-list">
-                        { Books }
-                    </ul>
+                <div className="row">
+                    <div className="col m8 s12">
+                        <ul id="book-list">
+                            { Books }
+                        </ul>
+                    </div>
 
-                    <BookDetails bookId={this.state.selected} />
+                    <div className="col m4 s12">
+                        <BookDetails bookId={this.state.selected} />
+                    </div>
                 </div>
             );
         }

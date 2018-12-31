@@ -16,10 +16,19 @@ class App extends Component {
 		return (
 			<ApolloProvider client={client}>
 				<div className="App container">
-					<h3>StoicReads - A Sacred Collection</h3>
-
-					<BookList />
-					<AddBook />
+					<div className="row">
+						<h3 className="center">StoicReads - A Classic Collection</h3>
+						
+						<div className="col s12">
+							<BookList />
+						</div>
+					</div>
+						
+					<div className="row">
+						<div className="col s12">
+							<AddBook />
+						</div>
+					</div>
 				</div>
 			</ApolloProvider>
 		);
