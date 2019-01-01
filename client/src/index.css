@@ -12,7 +12,8 @@ body {
 
 form {
 	padding: 1rem 2rem;
-	border-radius: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 .card {
   border-radius: 1rem;
